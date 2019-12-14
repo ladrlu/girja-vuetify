@@ -1,13 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CreateWorkout from '../views/CreateWorkout.vue';
-import RunWorkout from '../views/RunWorkout.vue'
+import RunWorkout from '../views/RunWorkout.vue';
+import HomePage from '../views/HomePage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  
   {
     path: '/',
+    name: 'homePage',
+    component: HomePage
+  },
+  {
+    path: '/createWorkout',
     name: 'createworkout',
     component: CreateWorkout
   },
