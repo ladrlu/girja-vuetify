@@ -62,6 +62,9 @@
                   <v-btn @click="ereaseExercise($event)" class="mx-2" fab dark color="indigo">
                     <v-icon dark>mdi-minus</v-icon>
                   </v-btn>
+                     <v-btn @click="saveExercise()" class="mx-2" fab dark color="indigo">
+                    {{btnText}}
+                  </v-btn>
                 </v-row>
 
                <div v-if="isCustom">
@@ -118,9 +121,10 @@ data: function() {
       isCustom: false,
       time: 0,
       series: [],
+      btnText: "save"
     }
   },
-  props: {
+/*   props: {
     exerciseId: {
       type: Number,
       required: true,
@@ -159,7 +163,7 @@ data: function() {
         required: true,
         default: []
       }
-  },
+  } */
   computed: {
       setCountComputed: {
     // getter
@@ -195,11 +199,22 @@ data: function() {
     ereaseExercise(event) {
       this.$emit('erase', this.exerciseId);
       
-    }
-  },
-  created() {
+    },
+    saveExercise() {
+      this.$emit('save', {
+      exerciseName: this.exerciseName,
+      setCount: this.setCount,
+      repeatCount: this.repeatCount,
+      weight: this.weight,
+      isCustom: this.isCustom,
+      time: this.time,
+      series: this.series,
+       });
+      this.btnText = "saved";
 
-  }
+    }
+
+  },
   
 };
 </script>

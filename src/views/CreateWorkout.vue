@@ -7,17 +7,10 @@
     </v-btn>
 
     <create-workout-form 
-      v-for="(exercise, index) in exercises" 
+      v-for="index in exercises.length +1" 
       :key="index" 
-      v-bind:exerciseName="exercise.exerciseName"
-      v-bind:setCount="exercise.setCount"
-      v-bind:repeatCount="exercise.repeatCount"
-      v-bind:weight="exercise.weight"
-      v-bind:isCustom="exercise.isCustom"
-      v-bind:series="exercise.series"
-      v-bind:time="exercise.time"
-      v-bind:exerciseId="exercise.exerciseId"
       v-on:erase="eraseExercise($event)"
+      v-on:save="saveExercise($event)"
      />
     
   </div>
@@ -33,7 +26,7 @@ export default {
         title: '',
         finishedDate: '',
         open: true,
-        exercises: [this.createExercise()]
+        exercises: []
       }
     },
   components: {
@@ -63,8 +56,8 @@ export default {
      } */
      this.exercises = this.exercises.filter(exercise => exercise.exerciseId !== data)
     },
-    generateExerciseID() {
-      return (Math.random() *1000)
+    saveExercise(event) {
+      this.exercises.push(event);
     }
   }
 }
