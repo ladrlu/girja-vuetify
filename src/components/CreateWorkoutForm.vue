@@ -124,46 +124,6 @@ data: function() {
       btnText: "save"
     }
   },
-/*   props: {
-    exerciseId: {
-      type: Number,
-      required: true,
-      default: 1
-      },
-    exerciseName: {
-      type: String,
-      required: true,
-      default: null
-      },
-      setCount: {
-        type: Number,
-        required: true,
-        default: 1
-      },
-      repeatCount: {
-        type: Number,
-        required: true,
-        default: 1
-      },
-      weight: {
-        type: Number,
-        required: true,
-        default: 1
-      },
-      isCustom: {
-        type: Boolean,
-        default: false
-      },   
-      time: {
-        type: Number,
-        default: 0
-      },
-      series: {
-        type: Array,
-        required: true,
-        default: []
-      }
-  } */
   computed: {
       setCountComputed: {
     // getter
@@ -211,9 +171,7 @@ data: function() {
       series: this.series,
        });
       this.btnText = "saved";
-
     }
-
   },
   
 };
