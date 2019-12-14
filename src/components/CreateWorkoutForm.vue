@@ -10,6 +10,7 @@
                   :items="['TGU', 'dřep', 'swing']"
                   label="Vyber cvik"
                   solo
+                  v-model="exerciseName"
                 ></v-select>
               </v-card-title>
 
@@ -41,6 +42,14 @@
                       v-model="weight"
                       label="Váha"
                       required
+                    ></v-text-field>
+                  </v-col>
+                  
+                  <v-col cols="12" md="3">
+                    <v-text-field
+                      type="number"
+                      v-model="time"
+                      label="Čas"
                     ></v-text-field>
                   </v-col>
 
@@ -97,14 +106,51 @@
 
 <script>
 export default {
-  data: function() {
+/*   data: function() {
     return {
+      exerciseName: null,
       setCount: 1,
       repeatCount: 1,
       weight: 1,
       isCustom: false,
+      time: 0,
       series: [],
     }
+  }, */
+  props: {
+    exerciseName: {
+      type: String,
+      required: true,
+      default: null
+      },
+      setCount: {
+        type: Number,
+        required: true,
+        default: 1
+      },
+      repeatCount: {
+        type: Number,
+        required: true,
+        default: 1
+      },
+      weight: {
+        type: Number,
+        required: true,
+        default: 1
+      },
+      isCustom: {
+        type: Boolean,
+        default: false
+      },   
+      time: {
+        type: Number,
+        default: 0
+      },
+      series: {
+        type: Array,
+        required: true,
+        default: []
+      }
   },
   computed: {
       setCountComputed: {
@@ -127,7 +173,8 @@ export default {
     createSeries(seriesNumber) {
       return {seriesNumber, 
               repeatCount: this.repeatCount, 
-              weight: this.weight};
+              weight: this.weight
+              };
     },
     onSetCountInput(value) {
       if (this.series.length < value) {
