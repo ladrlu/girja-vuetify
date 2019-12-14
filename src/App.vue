@@ -4,21 +4,22 @@
     <v-navigation-drawer
       v-model="drawer"
       app
+      color="blue-grey lighten-4"
     >
-      <v-list dense>
+      <v-list rounded>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title> <router-link to="@/views/Homepage.vue">Domů</router-link> </v-list-item-title>
+            <v-list-item-title> <router-link to="/">Domů</router-link> </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title><router-link to="@/views/CreateWorkout.vue">Vytvořit trénink</router-link></v-list-item-title>
+            <v-list-item-title><router-link to="/createWorkout">Vytvořit trénink</router-link></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title><router-link to="@/views/RunWorkout.vue">Cvičit trénink</router-link></v-list-item-title>
+            <v-list-item-title><router-link to="/runWorkout">Cvičit trénink</router-link></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -62,3 +63,12 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+</style>
