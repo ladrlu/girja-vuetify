@@ -16,12 +16,15 @@
       v-bind:isCustom="exercise.isCustom"
       v-bind:series="exercise.series"
       v-bind:time="exercise.time"
+      v-bind:exerciseId="exercise.exerciseId"
+      v-on:erase="eraseExercise($event)"
      />
     
   </div>
 </template>
 
 <script>
+let exerciseId = 1;
 
 import CreateWorkoutForm from '@/components/CreateWorkoutForm.vue';
 export default {
@@ -39,6 +42,7 @@ export default {
   methods: {
     createExercise() {
       return {
+          exerciseId: exerciseId++,
           exerciseName: "",
           setCount: 1,
           repeatCount: 1,
@@ -47,8 +51,23 @@ export default {
           time: 0,
           series: []
       }
+    },
+    eraseExercise(data) {
+     /* let arr = [];
+     for( var i = 0; i < this.exercises.length; i++ ) {
+       console.log(this.exerciseId);
+       if (this.exercises[i].exerciseId != data) {
+         arr.push(this.exercises[i]);
+        
+       };
+     } */
+     this.exercises = this.exercises.filter(exercise => exercise.exerciseId !== data)
+    },
+    generateExerciseID() {
+      return (Math.random() *1000)
     }
   }
- 
 }
+ 
+
 </script>

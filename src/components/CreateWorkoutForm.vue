@@ -59,6 +59,9 @@
                     <v-switch v-model="isCustom" class="ma-2" label=""></v-switch>
 
                   </v-col>
+                  <v-btn @click="ereaseExercise($event)" class="mx-2" fab dark color="indigo">
+                    <v-icon dark>mdi-minus</v-icon>
+                  </v-btn>
                 </v-row>
 
                <div v-if="isCustom">
@@ -106,7 +109,7 @@
 
 <script>
 export default {
-/*   data: function() {
+data: function() {
     return {
       exerciseName: null,
       setCount: 1,
@@ -116,8 +119,13 @@ export default {
       time: 0,
       series: [],
     }
-  }, */
+  },
   props: {
+    exerciseId: {
+      type: Number,
+      required: true,
+      default: 1
+      },
     exerciseName: {
       type: String,
       required: true,
@@ -183,8 +191,15 @@ export default {
           this.series.push(this.createSeries(this.series.length + i))
         }
       }
+    },
+    ereaseExercise(event) {
+      this.$emit('erase', this.exerciseId);
+      
     }
   },
+  created() {
+
+  }
   
 };
 </script>
