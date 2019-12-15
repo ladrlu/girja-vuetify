@@ -1,59 +1,94 @@
 <template>
+<v-card class="container" max-width="400">
   <v-stepper v-model="e1">
     <v-stepper-header>
-      <v-stepper-step :complete="e1 > 1" step="1">Name of step 1</v-stepper-step>
+      <div v-for="(exercise, index) in workout" :key="index">
+        <v-stepper-step :complete="e1 > index+1" v-bind:step="index+1">{{exercise.exerciseName}}</v-stepper-step>
+        <v-divider></v-divider>
+      </div>
 
-      <v-divider></v-divider>
 
     </v-stepper-header>
 
     <v-stepper-items>
-      <v-stepper-content step="1">
-        <v-card class="mb-12" color="grey lighten-1" height="200px">
-          <series-counter />
+      <v-stepper-content v-for="(exercise, index) in workout" :key="index" v-bind:step="index+1">
+        <v-card class="mb-12 content" color="grey lighten-5" height="200px">
+             <div>počet opakování: {{ exercise.repeatCount}}</div>
+             <div>váha: {{ exercise.weight}} kg</div>
+          <div class="counter">
+            <v-btn  @click="exercise.setCount > 0 ? exercise.setCount-- : exercise.setCount = 0" class="mx-2" fab dark color="indigo">
+              <v-icon dark>mdi-minus</v-icon>
+            </v-btn>
+            
+            <h1>{{ exercise.setCount}}</h1>
+ 
+          </div>
 
         </v-card>
 
-        <v-btn color="primary" @click="e1 = 2">
+        <v-btn color="indigo" dark @click="e1 = e1+1">
           Další cvik
         </v-btn>
 
-        <v-btn text>Prdím na to</v-btn>
+        <v-btn text><router-link to="/">Du dom</router-link></v-btn>
+
       </v-stepper-content>
 
 
     </v-stepper-items>
   </v-stepper>
+  </v-card>
 </template>
 
 
 <script>
   import SeriesCounter from '../components/SeriesCounter.vue';
-
   export default {
     data() {
       return {
-        title: 'cviceni1',
-        finishedDate: '21.1.2019',
-        open: true,
-        exercises: [
-          { 
-            exerciseName: null,
-            setCount: 1,
-            repeatCount: 1,
-            weight: 1,
-            isCustom: true,
-            series: [{seriesNumber:1,repeatCount:5,weight:15},{seriesNumber:2,repeatCount:5,weight:15},{seriesNumber:3,repeatCount:5,weight:15}]
-          }
-        ]
+        e1: 1
       }
     },
-    components: {
-      SeriesCounter,
-    }
+
+    computed: {
+      workout() {
+        return this.$store.state.workout[0].exercises;
+      }
+    },
+    methods: {
+    decreaseCountOfSeries() {
+        if (exercise.setCount > 0) {
+          exercise.setCount--;
+        }
+      },
+      
+    },
   }
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px 0;
+  }
+  a{
+    text-decoration: none;
+    color: white;
 
-</style>
+  }
+  .content {
+    padding: 15px;
+  }
+  .container {
+    margin: 30px auto 0 auto;
+  }
+  button {
+    color: white;
+  }
+
+
+
+</style> 

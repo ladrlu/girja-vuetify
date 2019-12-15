@@ -14,12 +14,12 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/createWorkout',
+    path: '/createworkout',
     name: 'createworkout',
     component: CreateWorkout
   },
   {
-    path: '/runWorkout',
+    path: '/runworkout',
     name: 'runWorkout',
     component: RunWorkout
   }

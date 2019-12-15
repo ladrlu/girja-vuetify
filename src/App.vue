@@ -4,22 +4,22 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      color="blue-grey lighten-4"
+      color="blue lighten-4"
     >
       <v-list rounded>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title> <router-link to="/">Domů</router-link> </v-list-item-title>
+            <router-link to="/"><v-list-item-title>Domů</v-list-item-title></router-link>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title><router-link to="/createWorkout">Vytvořit trénink</router-link></v-list-item-title>
+            <router-link to="/createworkout"><v-list-item-title>Vytvořit trénink</v-list-item-title></router-link>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title><router-link to="/runWorkout">Cvičit trénink</router-link></v-list-item-title>
+            <router-link to="/runworkout"><v-list-item-title>Cvičit trénink</v-list-item-title></router-link>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -27,11 +27,11 @@
 
     <v-app-bar
       app
-      color="blue-grey"
+      color="blue"
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Tady skončil můj život</v-toolbar-title>
+      <v-toolbar-title>Nejede to, ale jsme tu</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -39,10 +39,9 @@
     </v-content>
 
     <v-footer
-      color="blue-grey"
+      color="blue"
       app
     >
-      <span class="white--text">&copy; 2019</span>
     </v-footer>
   </v-app>
 </template>

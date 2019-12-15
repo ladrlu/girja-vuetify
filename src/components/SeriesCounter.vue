@@ -1,11 +1,11 @@
 <template>
 <v-card>
-  <v-progress-linear color="light-blue" height="10" v-bind:value="countOfSeries/sumOfSeries*100" striped></v-progress-linear>
+  <v-progress-linear color="light-blue" height="10" v-bind:value=" workout.setCount/ workout.setCount*100" striped></v-progress-linear>
   <div class="counter">
       <v-btn @click="decreaseCountOfSeries()" class="mx-2" fab dark color="indigo">
       <v-icon dark>mdi-minus</v-icon>
     </v-btn>
-    <h1>{{countOfSeries}}/{{sumOfSeries}}</h1>
+    <h1>{{ workout.setCount}}/{{ workout.setCount}}</h1>
 
     <v-btn @click="increaseCountOfSeries()" class="mx-2" fab dark color="indigo">
       <v-icon dark>mdi-plus</v-icon>
@@ -15,7 +15,7 @@
     <v-btn @click="countDownTimer()" class="mx-2" fab dark color="indigo">
       start
     </v-btn>
-  {{ countDown }}
+  {{ workout.time }}
   </div>
 
 </v-card>
@@ -26,9 +26,9 @@
   export default {
     data () {
       return {
-        countOfSeries: 1,
-        sumOfSeries: 10,
-        countDown: 10
+     /*    countOfSeries: workout.setCount,
+        sumOfSeries: workout.setCount,
+        countDown: workout.time */
       }
     },
     methods: {
@@ -54,7 +54,12 @@
         }
         
       }
+    },
+      computed: {
+    workout() {
+      return this.$store.state.workout[0].exercises;
     }
+  },
   }
 
 </script>

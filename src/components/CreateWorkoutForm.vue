@@ -1,16 +1,17 @@
 <template>
   <div>
-    <v-card max-width="400" class="mx-auto">
+    <v-card max-width="400" class="container mx-auto">
       <v-container>
         <v-row dense>
           <v-col cols="12">
-            <v-card color="#385F73" dark>
+            <v-card color="light-grey">
               <v-card-title class="headline">
                 <v-select
                   :items="['TGU', 'dřep', 'swing']"
                   label="Vyber cvik"
                   solo
                   v-model="exerciseName"
+                  color="white"
                 ></v-select>
               </v-card-title>
 
@@ -53,18 +54,16 @@
                     ></v-text-field>
                   </v-col>
 
-                  <v-col cols="12" md="3">
+                  <v-col cols="12">
                     <!-- <v-checkbox v-model="isCustom" /> -->
 
                     <v-switch v-model="isCustom" class="ma-2" label=""></v-switch>
-
-                  </v-col>
-                  <v-btn @click="ereaseExercise($event)" class="mx-2" fab dark color="indigo">
-                    <v-icon dark>mdi-minus</v-icon>
-                  </v-btn>
-                     <v-btn @click="saveExercise()" class="mx-2" fab dark color="indigo">
+                  <v-btn @click="saveExercise()" class="mx-2" dark color="indigo">
                     {{btnText}}
                   </v-btn>
+
+                  </v-col>
+
                 </v-row>
 
                <div v-if="isCustom">
@@ -114,14 +113,14 @@
 export default {
 data: function() {
     return {
-      exerciseName: null,
+      exerciseName:"",
       setCount: 1,
       repeatCount: 1,
       weight: 1,
       isCustom: false,
       time: 0,
       series: [],
-      btnText: "save"
+      btnText: "uložit cvik"
     }
   },
   computed: {
@@ -170,11 +169,13 @@ data: function() {
       time: this.time,
       series: this.series,
        });
-      this.btnText = "saved";
+      this.btnText = "✔";
     }
   },
   
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
